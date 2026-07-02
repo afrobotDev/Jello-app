@@ -6,11 +6,17 @@ async function fetchIPAddress(domain: string): Promise<string | null> {
   });
   const respObject = await resp.json();
   const answers = respObject.Answer;
-  if (!answers || answers.length === 0) {
+  if (!Array.isArray(answers) || answers.length === 0) {
     return null;
   }
-  const randomIp = answers[Math.floor(Math.random() * answers.length)];
 
+  const ipAddresses = answers.filter((answer: { type: number }) => answer.type === 1);
+
+  if (ipAddresses.length === 0) {
+    return null;
+  }
+
+  const randomIp = ipAddresses[Math.floor(Math.random() * ipAddresses.length)];
   return randomIp.data;
 }
 
