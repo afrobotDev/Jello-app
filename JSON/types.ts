@@ -4,4 +4,3 @@ export interface Project {
   completed: boolean;
   assignees: number;
 }
-
