@@ -1,5 +1,5 @@
 export interface UserProfile {
-  id: string;
+  id?: string;
   user: User;
   experience: number;
   remote: boolean;
