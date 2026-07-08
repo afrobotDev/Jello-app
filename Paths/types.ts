@@ -1,4 +1,5 @@
 export type Resource = Project | Issue | UserProfile;
+export type Availability = "Low" | "Medium" | "High";
 
 export interface Project {
   id: string;
